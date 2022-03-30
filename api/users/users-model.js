@@ -4,7 +4,7 @@ function find() {
 
   return db('users')
   .leftJoin('roles')
-  .where('users', 'users.role_id', 'roles.roles_id')
+  .where('users', 'roles.role_id', 'users.roles_id')
   /**
     You will need to join two tables.
     Resolves to an ARRAY with all users.
@@ -25,7 +25,7 @@ function find() {
 }
 
 async function findBy(filter) {
-  return db('users').leftJoin('roles', 'users.role_id', 'role.role_id').select('user_id', 'username', 'password', 'role_name').where(filter);
+  return db('users').leftJoin('roles', 'users.role_id', 'roles.role_id').select('user_id', 'username', 'password', 'role_name').where(filter);
   /**
     You will need to join two tables.
     Resolves to an ARRAY with all users that match the filter condition.

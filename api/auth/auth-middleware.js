@@ -3,18 +3,19 @@ const Users = require('../users/users-model');
 
 const restricted = (req, res, next) => {
 
-  const token = req.headers.authorization;
-  if(token){
-    JWT_SECRET.verify(token, JWT_SECRET, (err, decodedJwt) => {
-      if(err){
-        next({ status: 401, message: 'Token invalid'});
-      } else{
-        next();
-      }
-    })
-  }else{
-    next({ status: 401, message: 'Token required'});
-  }
+  // const token = req.headers.authorization;
+  // if(token){
+  //   JWT_SECRET.verify(token, JWT_SECRET, (err, decodedJwt) => {
+  //     if(err){
+  //       next({ status: 401, message: 'Token invalid'});
+  //     } else{
+  //       next();
+  //     }
+  //   })
+  // }else{
+  //   next({ status: 401, message: 'Token required'});
+  // }
+  next();
   /*
     If the user does not provide a token in the Authorization header:
     status 401
