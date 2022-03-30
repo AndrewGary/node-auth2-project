@@ -1,6 +1,10 @@
 const db = require('../../data/db-config.js');
 
 function find() {
+
+  return db('users')
+  .leftJoin('roles')
+  .where('users', 'users.role_id', 'roles.roles_id')
   /**
     You will need to join two tables.
     Resolves to an ARRAY with all users.
